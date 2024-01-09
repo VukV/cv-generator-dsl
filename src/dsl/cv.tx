@@ -14,7 +14,7 @@ BasicInfo:
   'Name:' name=STRING
   'Surname:' surname=STRING
   ('Title:' title=STRING)?
-  ('Picture:' picture=FilePWhyath)?
+  ('Picture:' picture=FilePath)?
   ;
 
 FilePath: /([a-zA-Z0-9_\-\/\\]+)\.(jpg|jpeg|png|bmp)/;
