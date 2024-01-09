@@ -1,0 +1,65 @@
+Basic Info:
+    Name: 'John'
+    Surname: 'Doe'
+    Title: 'Senior Software Engineer'
+    Picture: /images/john_doe.jpg
+
+Contact Info:
+    Email: john.doe@example.com
+    Phone Number: +12345678901
+    LinkedIn: https://www.linkedin.com/in/johndoe
+    Other:
+        GitHub: 'https://github.com/johndoe'
+
+Experience:
+    Title: 'Lead Developer'
+    Company Name: 'Tech Innovations Inc.'
+    Time Period:
+        Start: Jan 2018
+        End: Present
+    Description:
+        ExperienceBullet: 'Developed and maintained a suite of high-availability microservices.'
+        ExperienceBullet: 'Led a team of 10 software engineers.'
+        ExperienceBullet: 'Coordinated the successful migration of legacy systems to a modern cloud-based architecture.'
+
+Experience:
+    Title: 'Software Engineer'
+    Company Name: 'DevSoft Solutions'
+    Time Period:
+        Start: Aug 2014
+        End: Dec 2017
+    Description:
+        ExperienceBullet: 'Implemented new features for a range of client web applications.'
+        ExperienceBullet: 'Improved system performance by optimizing existing code.'
+        ExperienceBullet: 'Actively contributed to team meetings and provided valuable input during planning stages.'
+
+Education:
+    School: 'University of Technology'
+    Title: 'Bachelor of Science in Computer Science'
+    Time Period:
+        Start: Sep 2010
+        End: Jun 2014
+
+Skills:
+    Skill: 'Python'
+    Skill: 'Java'
+    Skill: 'Docker'
+    Skill: 'Kubernetes'
+    Skill: 'Continuous Integration/Continuous Deployment'
+
+Languages:
+    Language:
+      Name: 'Italian'
+      Proficiency: Native
+    Language:
+      Name: 'English'
+      Proficiency: Professional
+
+Interests:
+    Interest: 'Open-Source Software'
+    Interest: 'Travel'
+    Interest: 'Photography'
+
+Output Format: PDF
+
+Style: Elegant
