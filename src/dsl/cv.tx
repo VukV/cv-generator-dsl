@@ -1,0 +1,86 @@
+CV:
+  basic_info=BasicInfo
+  contact_info=ContactInfo
+  experiences+=Experience
+  education*=Education
+  skills+=Skill
+  languages*=Language
+  interests*=Interest
+  output_format=OutputFormat
+  ;
+
+BasicInfo:
+  'Basic Info:'
+  'Name:' name=STRING
+  'Surname:' surname=STRING
+  ('Title:' title=STRING)?
+  ('Picture:' picture=FilePath)?
+  ;
+
+FilePath: /([a-zA-Z0-9_\-\/\\]+)\.(jpg|jpeg|png|bmp)/;
+
+ContactInfo:
+  'Contact Info:'
+  'Email:' email=Email
+  'Phone Number:' phone=PhoneNumber
+  ('LinkedIn:' linkedin=LinkedIn)?
+  other_contacts*=OtherContact
+  ;
+
+Email: /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/;
+
+PhoneNumber: /(\+\d{1,3}[- ]?)?[0-9]{7,15}/;
+
+LinkedIn: /https?:\/\/(www\.)?linkedin\.com\/in\/[a-zA-Z0-9-]+/;
+
+OtherContact:
+  'Other:' name=STRING ':' value=STRING
+  ;
+
+Experience:
+  'Experience:'
+  'Title:' title=STRING
+  'Company Name:' company=STRING
+  'Time Period:' timePeriod=TimePeriod
+  experience_bullets+=ExperienceBullet
+  ;
+
+ExperienceBullet:
+  '-' description=STRING
+  ;
+
+Education:
+  'Education:'
+  'School:' school=STRING
+  'Title:' title=STRING
+  'Time Period:' timePeriod=TimePeriod
+  ;
+
+Skill:
+  'Skill:' name=STRING
+  ;
+
+Language:
+  'Language:' name=STRING ('Proficiency:' proficiency=Proficiency)?
+  ;
+
+Proficiency: /native|professional|intermediate/;
+
+Interest:
+  'Interest:' name=STRING
+  ;
+
+TimePeriod:
+  start=Date ('-' end=Date)?;
+
+Date:
+  month=Month ' ' year=YEAR
+  ;
+
+Month: /Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec/;
+
+YEAR: /[0-9]{4}/;
+
+OutputFormat:
+  'Output Format:' format=('PDF' | 'HTML')
+  ;
