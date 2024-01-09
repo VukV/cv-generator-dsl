@@ -1,30 +1,31 @@
 CV:
-  basic_info=BasicInfo
-  contact_info=ContactInfo
-  experiences+=Experience
-  education*=Education
-  skills+=Skill
-  languages*=Language
-  interests*=Interest
-  output_format=OutputFormat
+    basic_info=BasicInfo
+    contact_info=ContactInfo
+    experiences+=Experience
+    education*=Education
+    skills=Skills
+    languages=Languages?
+    interests=Interests?
+    output_format=OutputFormat
+    style=Style?
   ;
 
 BasicInfo:
-  'Basic Info:'
-  'Name:' name=STRING
-  'Surname:' surname=STRING
-  ('Title:' title=STRING)?
-  ('Picture:' picture=FilePath)?
+    'Basic Info:'
+    'Name:' name=STRING
+    'Surname:' surname=STRING
+    ('Title:' title=STRING)?
+    ('Picture:' picture=FilePath)?
   ;
 
 FilePath: /([a-zA-Z0-9_\-\/\\]+)\.(jpg|jpeg|png|bmp)/;
 
 ContactInfo:
-  'Contact Info:'
-  'Email:' email=Email
-  'Phone Number:' phone=PhoneNumber
-  ('LinkedIn:' linkedin=LinkedIn)?
-  other_contacts*=OtherContact
+    'Contact Info:'
+    'Email:' email=Email
+    'Phone Number:' phone=PhoneNumber
+    ('LinkedIn:' linkedin=LinkedIn)?
+    other_contacts*=OtherContact
   ;
 
 Email: /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/;
@@ -34,53 +35,88 @@ PhoneNumber: /(\+\d{1,3}[- ]?)?[0-9]{7,15}/;
 LinkedIn: /https?:\/\/(www\.)?linkedin\.com\/in\/[a-zA-Z0-9-]+/;
 
 OtherContact:
-  'Other:' name=STRING ':' value=STRING
+    'Other:' name=OTHER_NAME ':' value=STRING
   ;
 
+OTHER_NAME: /[^: \n\t\r\f\v]+/;
+
 Experience:
-  'Experience:'
-  'Title:' title=STRING
-  'Company Name:' company=STRING
-  'Time Period:' timePeriod=TimePeriod
-  experience_bullets+=ExperienceBullet
+    'Experience:'
+    'Title:' title=STRING
+    'Company Name:' company=STRING
+    'Time Period:' timePeriod=TimePeriod
+    'Description:' experience_bullets+=ExperienceBullet
   ;
 
 ExperienceBullet:
-  '-' description=STRING
+    'ExperienceBullet:' description=STRING
   ;
 
 Education:
-  'Education:'
-  'School:' school=STRING
-  'Title:' title=STRING
-  'Time Period:' timePeriod=TimePeriod
+    'Education:'
+    'School:' school=STRING
+    'Title:' title=STRING
+    'Time Period:' timePeriod=TimePeriod
+  ;
+
+Skills:
+    'Skills:'
+    skills+=Skill (',' skills+=Skill)*
   ;
 
 Skill:
-  'Skill:' name=STRING
+    'Skill:' name=STRING
   ;
 
-Language:
-  'Language:' name=STRING ('Proficiency:' proficiency=Proficiency)?
+Languages:
+    'Languages:'
+    languages+=LanguageEntry
   ;
 
-Proficiency: /native|professional|intermediate/;
+LanguageEntry:
+    'Language:'
+    'Name:' name=STRING
+    ('Proficiency:' proficiency=Proficiency)?
+  ;
+
+Proficiency: /Native|Professional|Intermediate/;
+
+Interests:
+    'Interests:'
+    interests+=Interest (',' interests+=Interest)*
+  ;
 
 Interest:
-  'Interest:' name=STRING
+    'Interest:' name=STRING
   ;
 
 TimePeriod:
-  start=Date ('-' end=Date)?;
+    'Start:' start=Date
+    'End:' end=EndDate
+  ;
 
 Date:
-  month=Month ' ' year=YEAR
+    month=Month year=YEAR
+  ;
+
+EndDate:
+    (month=Month year=YEAR) | Present
   ;
 
 Month: /Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec/;
 
 YEAR: /[0-9]{4}/;
 
+Present: /Present/;
+
 OutputFormat:
-  'Output Format:' format=('PDF' | 'HTML')
+    'Output Format:' format=Format
   ;
+
+Format: /PDF|HTML/;
+
+Style:
+    'Style:' style=CVStyle
+  ;
+
+CVStyle: /Standard|Elegant|Modern/;
