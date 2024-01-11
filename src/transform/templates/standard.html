@@ -35,7 +35,7 @@
                 <h4>{{ experience.title }} at {{ experience.company }}</h4>
                 <p>{{ experience.timePeriod.start }} - {{ experience.timePeriod.end }}</p>
                 <ul>
-                    {% for bullet in experience.description.experience_bullets %}
+                    {% for bullet in experience.experience_bullets %}
                     <li>{{ bullet.description }}</li>
                     {% endfor %}
                 </ul>
@@ -56,7 +56,7 @@
         <section id="skills">
             <h3>Skills</h3>
             <ul>
-                {% for skill in model.skills %}
+                {% for skill in model.skills.skills %}
                 <li>{{ skill.name }}</li>
                 {% endfor %}
             </ul>
@@ -65,7 +65,7 @@
         <section id="languages">
             <h3>Languages</h3>
             <ul>
-                {% for language in model.languages %}
+                {% for language in model.languages.languages %}
                 <li>{{ language.name }} ({{ language.proficiency }})</li>
                 {% endfor %}
             </ul>
@@ -74,14 +74,14 @@
         <section id="interests">
             <h3>Interests</h3>
             <ul>
-                {% for interest in model.interests %}
+                {% for interest in model.interests.interests %}
                 <li>{{ interest.name }}</li>
                 {% endfor %}
             </ul>
         </section>
 
         <footer>
-            <p>CV generated using {{ model.output_format.format }}</p>
+            <p>CV generated using <a href="https://github.com/VukV/cv-generator-dsl">cv-generator-dsl</a></p>
         </footer>
     </div>
 </body>
