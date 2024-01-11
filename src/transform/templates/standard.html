@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ model.basic_info.name }} {{ model.basic_info.surname }} - CV</title>
+</head>
+<body>
+    <div id="cv">
+        <header>
+            <h1>{{ model.basic_info.name }} {{ model.basic_info.surname }}</h1>
+            {% if model.basic_info.title %}
+            <h2>{{ model.basic_info.title }}</h2>
+            {% endif %}
+            {% if model.basic_info.picture %}
+            <img src="{{ model.basic_info.picture }}" alt="Profile Picture">
+            {% endif %}
+        </header>
+
+        <section id="contact-info">
+            <h3>Contact Information</h3>
+            <p>Email: {{ model.contact_info.email }}</p>
+            <p>Phone: {{ model.contact_info.phone }}</p>
+            {% if model.contact_info.linkedin %}
+            <p>LinkedIn: {{ model.contact_info.linkedin }}</p>
+            {% endif %}
+            {% for other in model.contact_info.other_contacts %}
+            <p>{{ other.name }}: {{ other.value }}</p>
+            {% endfor %}
+        </section>
+
+        <section id="experience">
+            <h3>Experience</h3>
+            {% for experience in model.experiences %}
+            <article>
+                <h4>{{ experience.title }} at {{ experience.company }}</h4>
+                <p>{{ experience.timePeriod.start }} - {{ experience.timePeriod.end }}</p>
+                <ul>
+                    {% for bullet in experience.description.experience_bullets %}
+                    <li>{{ bullet.description }}</li>
+                    {% endfor %}
+                </ul>
+            </article>
+            {% endfor %}
+        </section>
+
+        <section id="education">
+            <h3>Education</h3>
+            {% for education in model.education %}
+            <article>
+                <h4>{{ education.title }} from {{ education.school }}</h4>
+                <p>{{ education.timePeriod.start }} - {{ education.timePeriod.end }}</p>
+            </article>
+            {% endfor %}
+        </section>
+
+        <section id="skills">
+            <h3>Skills</h3>
+            <ul>
+                {% for skill in model.skills %}
+                <li>{{ skill.name }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section id="languages">
+            <h3>Languages</h3>
+            <ul>
+                {% for language in model.languages %}
+                <li>{{ language.name }} ({{ language.proficiency }})</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section id="interests">
+            <h3>Interests</h3>
+            <ul>
+                {% for interest in model.interests %}
+                <li>{{ interest.name }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <footer>
+            <p>CV generated using {{ model.output_format.format }}</p>
+        </footer>
+    </div>
+</body>
+</html>

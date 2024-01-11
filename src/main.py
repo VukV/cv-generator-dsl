@@ -1,4 +1,5 @@
 from src.parser import parser
+from src.transform import generator
 import logging
 
 
@@ -7,7 +8,7 @@ def main():
 
     try:
         cv_model = parser.parse_cv(cv_file_path)
-        # TODO: generate
+        cv = generator.generate_cv(cv_model)
     except Exception as e:
         logging.error(e)
 
