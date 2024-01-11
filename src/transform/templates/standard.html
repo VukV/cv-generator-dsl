@@ -16,6 +16,8 @@
             {% endif %}
         </header>
 
+        <hr>
+
         <section id="contact-info">
             <h3>Contact Information</h3>
             <p>Email: {{ model.contact_info.email }}</p>
@@ -27,6 +29,8 @@
             <p>{{ other.name }}: {{ other.value }}</p>
             {% endfor %}
         </section>
+
+        <hr>
 
         <section id="experience">
             <h3>Experience</h3>
@@ -43,15 +47,19 @@
             {% endfor %}
         </section>
 
+        <hr>
+
         <section id="education">
             <h3>Education</h3>
             {% for education in model.education %}
             <article>
-                <h4>{{ education.title }} from {{ education.school }}</h4>
+                <p>{{ education.title }}, {{ education.school }}</p>
                 <p>{{ education.timePeriod.start }} - {{ education.timePeriod.end }}</p>
             </article>
             {% endfor %}
         </section>
+
+        <hr>
 
         <section id="skills">
             <h3>Skills</h3>
@@ -62,6 +70,8 @@
             </ul>
         </section>
 
+        <hr>
+
         <section id="languages">
             <h3>Languages</h3>
             <ul>
@@ -70,6 +80,8 @@
                 {% endfor %}
             </ul>
         </section>
+
+        <hr>
 
         <section id="interests">
             <h3>Interests</h3>
