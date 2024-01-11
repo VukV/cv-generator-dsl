@@ -2,7 +2,7 @@ Basic Info:
     Name: 'John'
     Surname: 'Doe'
     Title: 'Senior Software Engineer'
-    Picture: /images/john_doe.jpg
+    Picture: examples/images/john_doe.png
 
 Contact Info:
     Email: john.doe@example.com
@@ -33,6 +33,7 @@ Experience:
         ExperienceBullet: 'Improved system performance by optimizing existing code.'
         ExperienceBullet: 'Actively contributed to team meetings and provided valuable input during planning stages.'
 
+//This is a comment before education
 Education:
     School: 'University of Technology'
     Title: 'Bachelor of Science in Computer Science'
@@ -42,6 +43,7 @@ Education:
 
 Skills:
     Skill: 'Python'
+    //Java comment :)
     Skill: 'Java'
     Skill: 'Docker'
     Skill: 'Kubernetes'
