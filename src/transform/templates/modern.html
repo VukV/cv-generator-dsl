@@ -4,26 +4,40 @@
     <meta charset="UTF-8">
     <title>{{ model.basic_info.name }} {{ model.basic_info.surname }} - CV</title>
     <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             color: #333;
             background: #f9f9f9;
+            width: 794px;
+            height: 1123px;
+            position: relative;
+            box-sizing: border-box;
         }
         .left-column {
-            background: #124a6d;
+            background: #18546e;
             color: #ffffff;
-            width: 20%;
-            float: left;
-            height: 100vh;
+            width: 35%;
+            height: 1123px;
+            position: absolute;
+            left: 0;
+            top: 0;
             padding: 20px;
-            position: fixed;
+            box-sizing: border-box;
         }
         .right-column {
-            width: 70%;
-            margin-left: 30%;
+            width: 65%;
+            position: absolute;
+            right: 0;
+            top: 0;
             padding: 20px;
+            box-sizing: border-box;
+            height: 1123px;
         }
         header h1, .section-title h2 {
             margin: 0;
@@ -35,8 +49,8 @@
         header img {
             border-radius: 50%;
             margin-top: 20px;
-            max-width: 150px;
-            height: auto;
+            width: 150px;
+            height: 150px;
         }
         .contact-info, .languages, .interests {
             font-size: 0.9em;
@@ -45,7 +59,7 @@
             margin: 5px 0;
         }
         .languages li, .interests li {
-            background: rgba(14, 57, 86, 0.95);
+            background: #163044;
             display: inline-block;
             padding: 5px 15px;
             margin-right: 5px;
@@ -56,7 +70,6 @@
         }
         .right-column h3 {
             color: #333;
-            margin-top: 0;
         }
         .skills ul, .languages ul, .interests ul {
             list-style: none;
@@ -71,12 +84,16 @@
             margin-bottom: 5px;
             font-size: 0.9em;
         }
-        .section-title {
-            margin-top: 30px;
-        }
         .section-title h2 {
             font-size: 1.5em;
             margin-bottom: 10px;
+        }
+        footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8em;
         }
     </style>
 </head>
@@ -137,6 +154,9 @@
                 </article>
             {% endfor %}
         </section>
+
+        <br>
+
         <section class="skills">
             <div class="section-title">
                 <h2>Skills</h2>
@@ -147,6 +167,9 @@
                 {% endfor %}
             </ul>
         </section>
+
+        <br>
+
         <section class="education">
             <div class="section-title">
                 <h2>Education</h2>

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>{{ model.basic_info.name }} {{ model.basic_info.surname }} - CV</title>
     <style>
+        @page {
+            size: A3;
+        }
+
         html, body {
             height: 100%;
             margin: 0;
@@ -130,8 +134,6 @@
                 {% endfor %}
             </ul>
         </section>
-
-        <hr>
     </div>
 </body>
 </html>

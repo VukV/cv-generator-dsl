@@ -49,8 +49,7 @@ def generate_pdf(cv_model, template):
     output_file = os.path.join(output_dir, 'cv.pdf')
     create_output_dir()
 
-    custom_page_size = CSS(string='@page { size: A3; }')
-    HTML(string=html_content).write_pdf(output_file, stylesheets=[custom_page_size])
+    HTML(string=html_content).write_pdf(output_file)
 
     return output_file
 
