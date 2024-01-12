@@ -1,5 +1,5 @@
+import base64
 import os
-
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from weasyprint import HTML
 
@@ -20,6 +20,10 @@ def generate_cv(cv_model):
             template = env.get_template('modern.html')
         case _:
             template = env.get_template('standard.html')
+
+    if cv_model.basic_info.picture:
+        image_path = cv_model.basic_info.picture
+        cv_model.basic_info.picture = image_to_data_uri(image_path)
 
     if cv_model.output_format.format == 'HTML':
         return generate_html(cv_model, template)
@@ -52,3 +56,9 @@ def generate_pdf(cv_model, template):
 def create_output_dir():
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
+
+
+def image_to_data_uri(filepath):
+    with open(filepath, 'rb') as image_file:
+        encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
+        return f"data:image/png;base64,{encoded_string}"

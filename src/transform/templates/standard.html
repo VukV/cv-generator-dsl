@@ -2,18 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../static/standard.css">
     <title>{{ model.basic_info.name }} {{ model.basic_info.surname }} - CV</title>
 </head>
 <body>
     <div id="cv">
-        <header>
-            <h1>{{ model.basic_info.name }} {{ model.basic_info.surname }}</h1>
-            {% if model.basic_info.title %}
-            <h2>{{ model.basic_info.title }}</h2>
-            {% endif %}
-            {% if model.basic_info.picture %}
-            <img src="{{ model.basic_info.picture }}" alt="Profile Picture">
-            {% endif %}
+       <header>
+            <div class="header-content">
+                <div class="text-content">
+                    <h1>{{ model.basic_info.name }} {{ model.basic_info.surname }}</h1>
+                    {% if model.basic_info.title %}
+                    <h2>{{ model.basic_info.title }}</h2>
+                    {% endif %}
+                </div>
+                {% if model.basic_info.picture %}
+                <div class="image-content">
+                    <img src="{{ model.basic_info.picture }}" alt="Profile Picture" class="img-profile">
+                </div>
+                {% endif %}
+            </div>
         </header>
 
         <hr>
@@ -91,6 +98,8 @@
                 {% endfor %}
             </ul>
         </section>
+
+        <hr>
 
         <footer>
             <p>CV generated using <a href="https://github.com/VukV/cv-generator-dsl">cv-generator-dsl</a></p>
