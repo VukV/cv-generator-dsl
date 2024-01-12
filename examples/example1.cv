@@ -2,7 +2,6 @@ Basic Info:
     Name: 'John'
     Surname: 'Doe'
     Title: 'Senior Software Engineer'
-    Picture: examples/images/john_doe.png
 
 Contact Info:
     Email: john.doe@example.com
@@ -62,6 +61,6 @@ Interests:
     Interest: 'Travel'
     Interest: 'Photography'
 
-Output Format: PDF
+Output Format: HTML
 
 Style: Standard

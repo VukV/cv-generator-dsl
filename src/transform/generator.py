@@ -1,8 +1,7 @@
 import base64
 import os
 from jinja2 import Environment, FileSystemLoader, select_autoescape
-from weasyprint import HTML
-
+from weasyprint import HTML, CSS
 
 output_dir = 'output'
 
@@ -48,7 +47,9 @@ def generate_pdf(cv_model, template):
     html_content = template.render(model=cv_model)
     output_file = os.path.join(output_dir, 'cv.pdf')
     create_output_dir()
-    HTML(string=html_content).write_pdf(output_file)
+
+    custom_page_size = CSS(string='@page { size: A3; }')
+    HTML(string=html_content).write_pdf(output_file, stylesheets=[custom_page_size])
 
     return output_file
 

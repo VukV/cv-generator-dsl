@@ -2,8 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../../static/standard.css">
     <title>{{ model.basic_info.name }} {{ model.basic_info.surname }} - CV</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #cv {
+            flex: 1;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .text-content {
+            margin-right: 20px;
+        }
+
+
+        .img-profile {
+            max-width: 100px;
+            max-height: 100px;
+            height: auto;
+            width: auto;
+            border-radius: 50%;
+            margin-left: 60px;
+        }
+    </style>
 </head>
 <body>
     <div id="cv">
@@ -100,10 +133,10 @@
         </section>
 
         <hr>
-
-        <footer>
-            <p>CV generated using <a href="https://github.com/VukV/cv-generator-dsl">cv-generator-dsl</a></p>
-        </footer>
     </div>
+
+    <footer>
+        <p>CV generated using <a href="https://github.com/VukV/cv-generator-dsl">cv-generator-dsl</a></p>
+    </footer>
 </body>
 </html>
