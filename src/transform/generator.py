@@ -3,6 +3,7 @@ import os
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from weasyprint import HTML, CSS
 
+
 output_dir = 'output'
 
 
@@ -12,7 +13,7 @@ def generate_cv(cv_model):
         autoescape=select_autoescape(['html', 'xml'])
     )
 
-    match cv_model.style:
+    match cv_model.style.style:
         case 'Elegant':
             template = env.get_template('elegant.html')
         case 'Modern':

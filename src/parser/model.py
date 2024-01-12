@@ -1,4 +1,5 @@
 class Date:
+
     def __init__(self, month, year):
         self.month = month
         self.year = year
@@ -8,6 +9,7 @@ class Date:
 
 
 class EndDate:
+
     def __init__(self, month=None, year=None, present=False):
         self.month = month
         self.year = year

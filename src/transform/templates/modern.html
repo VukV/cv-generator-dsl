@@ -2,9 +2,162 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ model.basic_info.name }} {{ model.basic_info.surname }} - CV</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background: #f9f9f9;
+        }
+        .left-column {
+            background: #124a6d;
+            color: #ffffff;
+            width: 20%;
+            float: left;
+            height: 100vh;
+            padding: 20px;
+            position: fixed;
+        }
+        .right-column {
+            width: 70%;
+            margin-left: 30%;
+            padding: 20px;
+        }
+        header h1, .section-title h2 {
+            margin: 0;
+        }
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        header img {
+            border-radius: 50%;
+            margin-top: 20px;
+            max-width: 150px;
+            height: auto;
+        }
+        .contact-info, .languages, .interests {
+            font-size: 0.9em;
+        }
+        .contact-info p, .languages li, .interests li {
+            margin: 5px 0;
+        }
+        .languages li, .interests li {
+            background: rgba(14, 57, 86, 0.95);
+            display: inline-block;
+            padding: 5px 15px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .right-column article {
+            margin-bottom: 10px;
+        }
+        .right-column h3 {
+            color: #333;
+            margin-top: 0;
+        }
+        .skills ul, .languages ul, .interests ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .skills li {
+            background: #e7e7e7;
+            display: inline-block;
+            padding: 5px 15px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+        .section-title {
+            margin-top: 30px;
+        }
+        .section-title h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-
+    <div class="left-column">
+        {% if model.basic_info.picture %}
+            <header>
+                <img src="{{ model.basic_info.picture }}" alt="{{ model.basic_info.name }}'s Profile Picture">
+            </header>
+        {% endif %}
+        <header>
+            <h1>{{ model.basic_info.name }} {{ model.basic_info.surname }}</h1>
+            {% if model.basic_info.title %}
+                <h2>{{ model.basic_info.title }}</h2>
+            {% endif %}
+        </header>
+        <section class="contact-info">
+            <p>Email: {{ model.contact_info.email }}</p>
+            <p>Phone: {{ model.contact_info.phone }}</p>
+            {% if model.contact_info.linkedin %}
+                <p>LinkedIn: {{ model.contact_info.linkedin }}</p>
+            {% endif %}
+            {% for other in model.contact_info.other_contacts %}
+                <p>{{ other.name }}: {{ other.value }}</p>
+            {% endfor %}
+        </section>
+        <section class="languages">
+            <h2>Languages</h2>
+            <ul>
+                {% for language in model.languages.languages %}
+                    <li>{{ language.name }} ({{ language.proficiency }})</li>
+                {% endfor %}
+            </ul>
+        </section>
+        <section class="interests">
+            <h2>Interests</h2>
+            <ul>
+                {% for interest in model.interests.interests %}
+                    <li>{{ interest.name }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+    <div class="right-column">
+        <section class="experience">
+            <div class="section-title">
+                <h2>Work Experience</h2>
+            </div>
+            {% for experience in model.experiences %}
+                <article>
+                    <h3>{{ experience.title }} at {{ experience.company }}</h3>
+                    <p>{{ experience.timePeriod.start }} - {{ experience.timePeriod.end }}</p>
+                    <ul>
+                        {% for bullet in experience.experience_bullets %}
+                            <li>{{ bullet.description }}</li>
+                        {% endfor %}
+                    </ul>
+                </article>
+            {% endfor %}
+        </section>
+        <section class="skills">
+            <div class="section-title">
+                <h2>Skills</h2>
+            </div>
+            <ul>
+                {% for skill in model.skills.skills %}
+                    <li>{{ skill.name }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+        <section class="education">
+            <div class="section-title">
+                <h2>Education</h2>
+            </div>
+            {% for education in model.education %}
+                <article>
+                    <h3>{{ education.title }}, {{ education.school }}</h3>
+                    <p>{{ education.timePeriod.start }} - {{ education.timePeriod.end }}</p>
+                </article>
+            {% endfor %}
+        </section>
+    </div>
 </body>
 </html>
