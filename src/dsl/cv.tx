@@ -61,7 +61,7 @@ Education:
 
 Skills:
     'Skills:'
-    skills+=Skill (',' skills+=Skill)*
+    skills+=Skill
   ;
 
 Skill:
@@ -83,7 +83,7 @@ Proficiency: /Native|Professional|Intermediate/;
 
 Interests:
     'Interests:'
-    interests+=Interest (',' interests+=Interest)*
+    interests+=Interest
   ;
 
 Interest:

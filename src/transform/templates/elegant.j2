@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ model.basic_info.name }} {{ model.basic_info.surname }} - CV</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #0c2c3f;
+            background: #f9f9f9;
+            width: 794px;
+            height: 1123px;
+            position: relative;
+            box-sizing: border-box;
+        }
+        hr {
+            border-color: #0c2c3f;
+        }
+        .top-info {
+            padding: 20px;
+        }
+        .flex-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .image-info-content {
+            display: flex;
+            align-items: center;
+        }
+        .image-info-content {
+            flex: 1; /* Flex-grow to allow expansion */
+            padding: 0 10px; /* Add some spacing */
+        }
+        .image-content {
+            width: 100px;
+            margin-right: 20px;
+        }
+        .img-profile {
+            width: 100px;
+        }
+        .left-column {
+            width: 65%;
+            height: 1123px;
+            position: absolute;
+            left: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .right-column {
+            width: 35%;
+            position: absolute;
+            right: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            height: 1123px;
+        }
+        header h1, .section-title h2 {
+            margin: 0;
+        }
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        header img {
+            border-radius: 50%;
+            margin-top: 20px;
+            width: 150px;
+            height: 150px;
+        }
+        .contact-info, .languages, .interests {
+            font-size: 0.9em;
+        }
+        .contact-info p, .languages li, .interests li {
+            margin: 5px 0;
+        }
+        .languages li, .interests li, .skills li {
+            margin-bottom: 8px;
+        }
+        .right-column article {
+            margin-bottom: 10px;
+        }
+        .right-column h3 {
+            color: #333;
+        }
+        .skills ul, .languages ul, .interests ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .section-title h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-info">
+        <div class="flex-container">
+            <div class="image-info-content">
+                {% if model.basic_info.picture %}
+                <div class="image-content">
+                    <img src="{{ model.basic_info.picture }}" alt="Profile Picture" class="img-profile">
+                </div>
+                {% endif %}
+                <div class="text-content">
+                    <h1>{{ model.basic_info.name }} {{ model.basic_info.surname }}</h1>
+                    {% if model.basic_info.title %}
+                    <h2>{{ model.basic_info.title }}</h2>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <p><b>Email:</b> <span>{{ model.contact_info.email }}</span></p>
+                <p><b>Phone:</b> <span>{{ model.contact_info.phone }}</span></p>
+                {% if model.contact_info.linkedin %}
+                    <p><b>LinkedIn:</b> <span>{{ model.contact_info.linkedin }}</span></p>
+                {% endif %}
+                {% for other in model.contact_info.other_contacts %}
+                    <p><b>{{ other.name }}:</b> <span>{{ other.value }}</span></p>
+                {% endfor %}
+            </div>
+        </div>
+        <br><hr><br>
+    </div>
+
+    <div class="left-column">
+        <section class="experience">
+            <div class="section-title">
+                <h2>Work Experience</h2>
+            </div>
+            {% for experience in model.experiences %}
+                <article>
+                    <h3>{{ experience.title }} at {{ experience.company }}</h3>
+                    <p>{{ experience.timePeriod.start }} - {{ experience.timePeriod.end }}</p>
+                    <ul>
+                        {% for bullet in experience.experience_bullets %}
+                            <li>{{ bullet.description }}</li>
+                        {% endfor %}
+                    </ul>
+                </article>
+            {% endfor %}
+        </section>
+
+        <br><hr><br>
+
+        <section class="education">
+            <div class="section-title">
+                <h2>Education</h2>
+            </div>
+            {% for education in model.education %}
+                <article>
+                    <h3>{{ education.title }}, {{ education.school }}</h3>
+                    <p>{{ education.timePeriod.start }} - {{ education.timePeriod.end }}</p>
+                </article>
+            {% endfor %}
+        </section>
+    </div>
+
+    <div class="right-column">
+        <section class="skills">
+            <div class="section-title">
+                <h2>Skills</h2>
+            </div>
+            <ul>
+                {% for skill in model.skills.skills %}
+                    <li>{{ skill.name }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <br><hr><br>
+
+        <section class="languages">
+            <h2>Languages</h2>
+            <ul>
+                {% for language in model.languages.languages %}
+                    <li>{{ language.name }} ({{ language.proficiency }})</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <br><hr><br>
+
+        <section class="interests">
+            <h2>Interests</h2>
+            <ul>
+                {% for interest in model.interests.interests %}
+                    <li>{{ interest.name }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

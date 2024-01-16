@@ -10,7 +10,7 @@ def main():
         cv_model = parser.parse_cv(cv_file_path)
         cv = generator.generate_cv(cv_model)
     except Exception as e:
-        logging.error(e)
+        logging.exception(e)
 
 
 if __name__ == '__main__':
