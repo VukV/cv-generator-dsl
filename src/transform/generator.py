@@ -15,11 +15,11 @@ def generate_cv(cv_model):
 
     match cv_model.style.style:
         case 'Elegant':
-            template = env.get_template('elegant.html')
+            template = env.get_template('elegant.j2')
         case 'Modern':
-            template = env.get_template('modern.html')
+            template = env.get_template('modern.j2')
         case _:
-            template = env.get_template('standard.html')
+            template = env.get_template('standard.j2')
 
     if cv_model.basic_info.picture:
         image_path = cv_model.basic_info.picture
