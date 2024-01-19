@@ -1,6 +1,8 @@
 import os
 from textx import metamodel_from_file
 from src.parser.model import EndDate, Date
+from textx import LanguageDesc
+from textx import register_language
 
 
 def date_processor(date):
@@ -30,3 +32,14 @@ def init_cv_metamodel():
     })
 
     return cv_metamodel
+
+
+cv_language = LanguageDesc(
+    'cv_language',
+    pattern='*.cv',
+    description='CV generation language',
+    metamodel=init_cv_metamodel
+)
+
+
+register_language(cv_language)
