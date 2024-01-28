@@ -1,6 +1,5 @@
-from textx import metamodel_from_file
 import os
-from src.parser import init_cv_metamodel
+from .config import init_cv_metamodel
 
 
 cv_metamodel = init_cv_metamodel()

@@ -1,4 +1,4 @@
-from src.parser import parser
+from parser import parser
 from src.transform import generator
 import logging
 
