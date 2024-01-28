@@ -1,0 +1,50 @@
+{
+    "scopeName": "source.cv",
+    "name": "CV Language",
+    "fileTypes": ["cv"],
+    "patterns": [
+        {
+            "name": "comment.line.double-slash.cv",
+            "match": "\\/\\/.*$"
+        },
+        {
+            "name": "keyword.control.cv",
+            "match": "\\b(Basic Info|Name|Surname|Title|Picture|Contact Info|Email|Phone Number|LinkedIn|Other|GitHub|Experience|Company Name|Time Period|Description|ExperienceBullet|Education|School|Skills|Skill|Languages|Language|Proficiency|Native|Professional|Intermediate|Interests|Interest|Start|End|Present|Output Format|Style)\\b"
+        },
+        {
+            "name": "string.quoted.single.cv",
+            "begin": "'",
+            "end": "'",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.cv",
+                    "match": "\\\\'"
+                }
+            ]
+        },
+        {
+            "name": "constant.numeric.cv",
+            "match": "\\b\\d+\\b"
+        },
+        {
+            "name": "constant.language.boolean.cv",
+            "match": "\\b(true|false)\\b"
+        },
+        {
+            "name": "entity.name.section.cv",
+            "match": "\\b(Basic Info:|Contact Info:|Experience:|Education:|Skills:|Languages:|Interests:|Output Format:|Style:)\\b"
+        },
+        {
+            "name": "entity.name.filename.cv",
+            "match": "([a-zA-Z0-9_\\-\\/\\\\]+)\\.(jpg|jpeg|png|bmp)"
+        },
+        {
+            "name": "entity.name.url.cv",
+            "match": "https?:\\/\\/(www\\.)?[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+"
+        },
+        {
+            "name": "entity.name.email.cv",
+            "match": "[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+"
+        }
+    ]
+}
