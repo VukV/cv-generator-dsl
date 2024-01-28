@@ -3,6 +3,8 @@ Python TextX project for Domain Specific Languages course at Faculty of Technica
 
 This DSL enables automatic CV generation and export as a PDF. The main purpose of this DSL is to save time by providing a way to quickly create and edit CVs, instead of manually editing files.
 
+<br>
+
 ### Features:
 * Specifying basic and contact info
   * name, surname, email, phone number
@@ -17,8 +19,25 @@ This DSL enables automatic CV generation and export as a PDF. The main purpose o
 * Specifying different CV styles
   * Standard, Elegant, Modern
 
-### Instrucitons:
-* TO DO
+<br>
+
+### Instructions:
+After installing the project, you can list languages and generators using TextX commands:
+```
+textx list-languages
+textx list-generators
+```
+This way, you confirm that CV language and generator are registered properly. 
+
+You can generate the CVs using the following TextX command:
+```
+textx generate [PATH TO .cv FILE] --target HTML/PDF
+```
+<br>
+
+Alternatively, you can run `main.py`, but remember to change `cv_file_path` variable to your .cv file.
+
+<br>
 
 ### Examples:
 
@@ -94,5 +113,4 @@ Style: Modern
 
 ```
 
-Output:
-* TO DO
+Generated CV for given example: [cv.pdf](output/cv.pdf)
