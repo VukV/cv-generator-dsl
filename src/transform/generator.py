@@ -63,7 +63,7 @@ def image_to_data_uri(filepath):
         return f"data:image/png;base64,{encoded_string}"
 
 
-@generator('cv', 'html/pdf')
+@generator('cv', 'HTML/PDF')
 def cv_generator(metamodel, model, output_path, overwrite, debug, **custom_args):
     if output_path:
         return generate_cv(model, output_path)

@@ -29,7 +29,7 @@ setup(
     install_requires=["textx", "Jinja2", "weasyprint"],
     entry_points={
         'textx_languages': [
-            'cv_lang = parser:cv_language',
+            'cv_lang = parser.config:cv_parser',
         ],
         'textx_generators': [
             'cv_gen = transform.generator:cv_generator',
