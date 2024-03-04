@@ -1,0 +1,23 @@
+{
+    "name": "cv-language",
+    "displayName": "CV Language",
+    "description": "Syntax highlighting for CV Language",
+    "version": "0.0.1",
+    "publisher": "vuk",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": ["Programming Languages"],
+    "contributes": {
+        "languages": [{
+            "id": "cv",
+            "aliases": ["CV", "cv"],
+            "extensions": [".cv"]
+        }],
+        "grammars": [{
+            "language": "cv",
+            "scopeName": "source.cv",
+            "path": "syntaxes/cv_language.tmLanguage.json"
+        }]
+    }
+}
